@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Asunder|Search Page</title>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<style>
+.abc
+{
+	width:20%;
+}
+</style>
+
+<link rel="stylesheet" href="w3css/w3.css">
+<script type="text/javascript" src="jquery/jquery.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="angular/angular.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+
+      
+
+<div id="page">
+
+    <h2 style="color:grey;">Asunder <h3 style="color: grey">The Game DataBase</h3></h2>
+    <div ng-app= "app" class="w3-card-4 frm">
+		<form id="searchForm"  method="POST" action="query.php"enctype="multipart/form-data">
+		<div ng-controller="select" class = "container">
+			<h4>  Search By:</h4>
+			  <button type="button" class="btn {{class1}}" ng-click="toggle()" >Game</button>
+			  <button type="button" class="btn {{class2}}" ng-click="toggle2()" >Developer</button>
+			  <button type="button" class="btn {{class3}}" ng-click="toggle3()" >Publisher</button>
+			  <button type="button" class="btn {{class4}}" ng-click="toggle4()" >Users</button>
+	
+		    <br><br>        
+           	<input name="g" id='game' class="myinput" type="text" ng-if="flag" placeholder="Select Fields Accordingly"/>
+           	<input name="d" class="myinput" type="text" ng-if="flag2" placeholder="Select Fields Accordingly"/>
+           	<input name="p" class="myinput" type="text" ng-if="flag3" placeholder="Select Fields Accordingly"/>
+           	<input name="u" class="myinput" type="text" ng-if="flag4" placeholder="Select Fields Accordingly"/>
+            
+            <input type="submit" value="Submit" id="submitButton" /><!-- write on submit function and use --><br>
+			<div ng-if="flag">
+			<input class="w3-check" type="checkbox" name="cb[]" value="G" checked="checked"/>
+			<label class="w3-validate abc">Game Details</label>
+			<input class="w3-check" type="checkbox" name="cb[]" value="D" />
+			<label class="w3-validate abc">Developer </label><br />
+			<input class="w3-check" type="checkbox" name="cb[]" value="P" />
+			<label class="w3-validate abc">Publisher</label>
+			<input class="w3-check" type="checkbox" name="cb[]" value="PT" />
+			<label class="w3-validate abc">Platform</label><br />
+			</div>
+		</div><br>
+		<br>
+		<a href = "user.html">
+		<div class="container" display=none><button id="add_user" type="button" class="btn btn-danger">+ Add User</button>
+		<button type = "button" id="add_user1" class = "btn btn-info">- Delete User</button>
+		<button type = "button" id="add_user2" class = "btn btn-warning">- Modify User</button>
+		</div>
+		</a>
+		</form>
+		
+		<div id="otput">
+		
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+/*$(function() {
+    $( "#game" ).autocomplete({
+        source: 'query.php'
+    });
+});*/
+
+//var user = document.getElementById('add_user')
+
+p.onclick = function()
+{
+if(p.innerHTML == 'Users' || p.value == 'Users')
+		document.writeln('<div class="container" display=none><button id="add_user" type="button" class="btn btn-danger" style="display:none" >+ Add User</button></div>');
+}
+
+document.getElementById('submitButton').onclick = function()
+{
+var otpt = document.getElementById('otput');
+var xhttp = new XMLHttpRequest();
+xhttp.open('POST','query.php','true')
+xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+     otpt.innerHTML = xhttp.responseText;
+    }
+  }
+ xhttp.send();
+}
+
+
+</script>    
+
+
+</body>
+</html>

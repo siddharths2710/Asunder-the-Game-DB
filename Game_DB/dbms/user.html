@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Asunder|Search Page</title>
+
+<link rel="stylesheet" type="text/css" href="css/user-styles.css" />
+<style>
+.abc
+{
+	width:20%;
+}
+</style>
+
+<link rel="stylesheet" href="w3css/w3.css">
+<script type="text/javascript" src="jquery/jquery.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="angular/angular.min.js"></script>
+<script type="text/javascript" src="user.js"></script>
+</head>
+<body>
+
+      
+
+<div id="page">
+
+    <h2 style="color:grey;">Asunder <h3 style="color: grey">The Game DataBase</h3></h2>
+    <div ng-app= "app" class="w3-card-4" >
+		<form id="searchForm" class="w3-container"  method="POST" action="user.php"enctype="multipart/form-data">
+		<div ng-controller="select">
+			<h4>  USERS:</h4>
+			  <button type="button" class="btn {{class1}}" ng-click="toggle()" >Create</button>
+			  <button type="button" class="btn {{class2}}" ng-click="toggle2()" >Update</button>
+			  <button type="button" class="btn {{class3}}" ng-click="toggle3()" >Remove</button>
+			  
+		    <br><br>        
+           	<input name="c" id='game' class="w3-input" type="text" ng-if="flag" placeholder="Create new user"/>
+           	<input name="u" class="w3-input" type="text" ng-if="flag2" placeholder="User to be updated"/>
+           	<input name="u2" class="w3-input" type="text" ng-if="flag2" placeholder="New name"/>
+           	<input name="r" class="w3-input" type="text" ng-if="flag3" placeholder="User to be deleted"/>
+            
+            <br>
+			<div ng-if="flag">
+				<input type="button" class="w3-btn w3-blue w3-round" ng-click="add()" value="Add Game"/><br><br ng-if="c>=1">
+				<!--games user plays max4-->
+				<label class="w3-label" style="font-size:20px;"ng-if="c>=1" >First</label>
+				<input type="text" name="a" class = "w3-input w3-border w3-light-grey" style="width:60%;height:10%;"ng-if="c>=1" required/><br ng-if="c>=1">
+				<label class="w3-label"  style="font-size:20px;"ng-if="c>=2">Second</label><br ng-if="c>=2">
+				<input type="text" name="b" class = "w3-input w3-border w3-light-grey" style="width:60%;height:10%;" ng-if="c>=2"/><br ng-if="c>=2">
+				<label class="w3-label"  style="font-size:20px;"ng-if="c>=3">Third</label><br ng-if="c>=3">
+				<input type="text" name="c" class = "w3-input w3-border w3-light-grey" style="width:60%;height:10%;" ng-if="c>=3"/><br ng-if="c>=3">
+				<label class="w3-label"  style="font-size:20px;"ng-if="c>=4">Fourth</label><br ng-if="c>=4">
+				<input type="text" name="d" class = "w3-input w3-border w3-light-grey" style="width:60%;height:10%;" ng-if="c>=4"/><br ng-if="c>=4">
+				<input type="button" ng-if="c>0"class="w3-btn w3-blue w3-round" ng-click="remove()" value="Remove Game"/><br>
+				<h4 ng-if="c>4"> Maximum is 4</h4>
+			</div><br>
+			<input type="submit" class="w3-btn w3-teal w3-round" value="Submit" /><!-- write on submit function and use --><br>
+		</div><br><br>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+/*$(function() {
+    $( "#game" ).autocomplete({
+        source: 'query.php'
+    });
+});*/
+</script>    
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+var mainApp = angular.module('app',[]);
+mainApp.controller('select', function($scope, $http){	
+	$scope.flag=true;
+	$scope.flag2=false;
+	$scope.flag3=false;
+	$scope.c=0;
+	$scope.class1="btn-primary";
+	$scope.class2="btn-default";
+	$scope.class3="btn-default";
+	$scope.sub=false;
+	$scope.msg="";
+	$scope.toggle=function(){
+		$scope.flag=true; 
+		$scope.flag2=false;
+		$scope.flag3=false;
+		somefn();
+	};
+	$scope.toggle2=function(){
+		$scope.flag=false; 
+		$scope.flag3=false; 
+		$scope.flag2=true;
+		somefn();
+	}
+	$scope.toggle3=function(){
+		$scope.flag=false; 
+		$scope.flag2=false; 
+		$scope.flag3=true;
+		somefn();
+	}
+	$scope.add=function(){
+		$scope.c+=1;
+	}
+	$scope.remove=function(){
+		if($scope.c>1){
+			$scope.c-=1;
+		}
+	}
+	function somefn(){
+		if($scope.flag)
+			$scope.class1="btn-primary";
+		else
+			$scope.class1="btn-default";
+		if($scope.flag2)
+			$scope.class2="btn-primary";
+		else
+			$scope.class2="btn-default";
+		if($scope.flag3)
+			$scope.class3="btn-primary";
+		else
+			$scope.class3="btn-default";
+	}
+})
+
